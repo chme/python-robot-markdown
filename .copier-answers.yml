@@ -1,0 +1,20 @@
+# Changes here will be overwritten by Copier
+_commit: 1.1.3
+_src_path: gh:pawamoy/copier-pdm
+author_email: christian.meffert@googlemail.com
+author_fullname: Christian Meffert
+author_username: chme
+copyright_date: '2023'
+copyright_holder: Christian Meffert
+copyright_holder_email: christian.meffert@googlemail.com
+copyright_license: MIT License
+insiders: false
+project_description: Convert RobotFramework output XML to markdown
+project_name: robot-markdown
+python_package_command_line_name: robot-markdown
+python_package_distribution_name: robot-markdown
+python_package_import_name: robot_markdown
+repository_name: python-robot-markdown
+repository_namespace: chme
+repository_provider: github.com
+

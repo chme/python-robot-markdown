@@ -1,12 +1,11 @@
 # robot-markdown
 
-[![ci](https://github.com/chme/python-robot-markdown/workflows/ci/badge.svg)](https://github.com/chme/python-robot-markdown/actions?query=workflow%3Aci)
+<!-- [![ci](https://github.com/chme/python-robot-markdown/workflows/ci/badge.svg)](https://github.com/chme/python-robot-markdown/actions?query=workflow%3Aci) -->
 [![documentation](https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=flat)](https://chme.github.io/python-robot-markdown/)
-[![pypi version](https://img.shields.io/pypi/v/robot-markdown.svg)](https://pypi.org/project/robot-markdown/)
-[![gitpod](https://img.shields.io/badge/gitpod-workspace-blue.svg?style=flat)](https://gitpod.io/#https://github.com/chme/python-robot-markdown)
-[![gitter](https://badges.gitter.im/join%20chat.svg)](https://app.gitter.im/#/room/#python-robot-markdown:gitter.im)
+<!-- [![pypi version](https://img.shields.io/pypi/v/robot-markdown.svg)](https://pypi.org/project/robot-markdown/) -->
 
 Convert RobotFramework output XML to markdown
+
 
 ## Installation
 

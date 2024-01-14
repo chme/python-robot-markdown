@@ -1,0 +1,6 @@
+{% set name = suite.stat.name.rpartition('.') %}
+{% set stat = suite.stat %}
+| {% include "stat_symbol.md.jinja" %} <small>{{name[0]}}{{name[1]}}</small>[{{name[-1]}}](#{{suite.stat.id}}) | {{suite.stat.passed}} / {{suite.stat.failed}} / {{suite.stat.skipped}} | {{suite.stat.total}} / {{suite.stat.elapsed}} ms |
+{% for suite in suite.suites %}
+{% include "suite_statistics.md.jinja" %}
+{% endfor %}

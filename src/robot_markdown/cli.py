@@ -18,6 +18,7 @@ import sys
 from typing import Any
 
 from robot_markdown import debug
+from robot_markdown.renderer import Renderer
 
 
 class _DebugInfo(argparse.Action):
@@ -36,8 +37,9 @@ def get_parser() -> argparse.ArgumentParser:
         An argparse parser.
     """
     parser = argparse.ArgumentParser(prog="robot-markdown")
-    parser.add_argument("-V", "--version", action="version", version=f"%(prog)s {debug.get_version()}")
+    parser.add_argument("-v", "--version", action="version", version=f"%(prog)s {debug.get_version()}")
     parser.add_argument("--debug-info", action=_DebugInfo, help="Print debug information.")
+    parser.add_argument("file", help="RobotFramework output.xml file.")
     return parser
 
 
@@ -55,4 +57,7 @@ def main(args: list[str] | None = None) -> int:
     parser = get_parser()
     opts = parser.parse_args(args=args)
     print(opts)
+    renderer = Renderer()
+    print(renderer.render(opts.file))
+
     return 0

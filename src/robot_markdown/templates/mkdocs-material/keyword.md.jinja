@@ -1,0 +1,13 @@
+??? {% if keyword.passed %}success{% elif keyword.failed %}failure{% else %}quote{% endif %} "{% if keyword.assign %}{% for var in keyword.assign %} `{{var}}`{% endfor %} `=` {% endif %}__{{keyword.kwname}}__{% for arg in keyword.args %} `{{arg}}`{% endfor %}"
+    
+    {{keyword.doc}}
+
+    {% for message in keyword.messages -%}
+    ```
+    {{message.level}} {{message.message | indent}}
+    ```
+
+    {% endfor %}
+
+    <small>:octicons-code-16: `{{keyword.libname}}`.__{{keyword.kwname}}__</small><br>
+    <small>:material-clock-fast: Executed in __{{keyword.elapsedtime}} ms__ on __{{keyword.start_time}}__</small>

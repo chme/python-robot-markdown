@@ -1,0 +1,8 @@
+{% if stat.failed > 0 %}
+    {% set status = 'FAIL' %}
+{% elif stat.passed > 0 %}
+    {% set status = 'PASS' %}
+{% else %}
+    {% set status = 'SKIP' %}
+{% endif %}
+<code class="robot-symbol robot-symbol-{{status | lower}}">{{status}}</code>

@@ -1,0 +1,23 @@
+
+{{ '#' * depth}} {{suite.name}} <code id="{{suite.id}}" class="robot-symbol robot-symbol-{{suite.status | lower}}">{{suite.status}}</code>
+
+<div class="suite-contents" markdown>
+
+{{suite.doc}}
+
+<small>:material-list-status: __{{suite.statistics.failed}} fail__, {{suite.statistics.passed}} pass, {{suite.statistics.skipped}} skip, __{{suite.statistics.total}} total__</small><br>
+<small>{% with item = suite %}{% include "elapsed_time.md.jinja" %}{% endwith %}</small>
+
+{% for test in suite.tests %}
+{% include "test.md.jinja" %}
+
+{% endfor %}
+
+{% for child_suite in suite.suites %}
+{% with suite = child_suite, depth = depth + 1 %}
+{% include "suite.md.jinja" %}
+
+{% endwith %}
+{% endfor %}
+
+</div>

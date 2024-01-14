@@ -1,0 +1,26 @@
+{{ '#' * (depth + 1)}} {{test.name}} <code id="{{test.id}}" class="robot-symbol robot-symbol-{{test.status | lower}}">{{test.status}}</code>
+
+<div class="test-contents" markdown>
+
+{{test.doc}}
+
+
+{% if test.message %}
+!!! failure ""
+    {{test.message | indent}}
+{% endif %}
+
+=== ":octicons-beaker-16: Test Case"
+
+{% for keyword in test.body %}
+{% filter indent(width=4) %}
+    {% include "keyword.md.jinja" %}
+
+{% endfilter %}
+
+{% endfor %}
+
+
+<small>{% with item = test %}{% include "elapsed_time.md.jinja" %}{% endwith %}</small>
+
+</div>

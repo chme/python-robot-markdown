@@ -1,0 +1,23 @@
+# {{robot.suite.name}}
+
+:material-list-status: __{{robot.statistics.total.failed}} failed__, {{robot.statistics.total.passed}} passed, {{robot.statistics.total.skipped}} skiped, __{{robot.statistics.total.total}} total__ 
+
+{% with item = robot.suite %}
+{% include "elapsed_time.md.jinja" %}
+
+{% endwith %}
+
+:octicons-code-16: `{{robot.suite.source}}`
+
+__Statistics__
+
+| By Suite | Pass / Fail / Skip | Total / Elapsed |
+| --- | :---: | :---: |
+{% set suite = robot.statistics.suite %}
+{% include "suite_statistics.md.jinja" %}
+
+{% set depth = 2 %}
+{% for suite in robot.suite.suites %}
+{% include "suite.md.jinja" %}
+
+{% endfor %}

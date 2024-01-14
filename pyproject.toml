@@ -27,7 +27,11 @@ classifiers = [
     "Topic :: Utilities",
     "Typing :: Typed",
 ]
-dependencies = []
+dependencies = [
+    "mkdocs>=1.5.3",
+    "jinja2>=3.1.2",
+    "robotframework>=6.1.1",
+]
 
 [project.urls]
 Homepage = "https://chme.github.io/python-robot-markdown"
@@ -41,6 +45,9 @@ Funding = "https://github.com/sponsors/chme"
 
 [project.scripts]
 robot-markdown = "robot_markdown.cli:main"
+
+[project.entry-points."mkdocs.plugins"]
+robot_markdown = "robot_markdown.plugin:RobotPlugin"
 
 [tool.pdm]
 version = {source = "scm"}

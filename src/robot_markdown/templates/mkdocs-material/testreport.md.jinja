@@ -3,9 +3,8 @@
 {{robot.suite.doc}}
 
 <small>:material-list-status: __{{robot.statistics.total.failed}} failed__, {{robot.statistics.total.passed}} passed, {{robot.statistics.total.skipped}} skiped, __{{robot.statistics.total.total}} total__</small><br>
-<small>{% with item = robot.suite %}{% include "elapsed_time.md.jinja" %}</small>
+<small>{% with item = robot.suite %}{% include "elapsed_time.md.jinja" %}{% endwith %}</small>
 
-{% endwith %}
 
 :octicons-code-16: `{{robot.suite.source}}`
 
@@ -17,6 +16,12 @@ __Statistics__
 {% include "suite_statistics.md.jinja" %}
 {% set tags = robot.statistics.tags %}
 {% include "tag_statistics.md.jinja" %}
+
+{% if robot.suite.has_setup %}
+__Setup__
+
+{% with keyword = robot.suite.setup %}{% include "keyword.md.jinja" %}{% endwith %}
+{% endif %}
 
 {% set depth = 2 %}
 {% for suite in robot.suite.suites %}

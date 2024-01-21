@@ -1,0 +1,3 @@
+{% for tag, stat in tags.tags.items() %}
+| {% include "stat_symbol.md.jinja" %} __`{{tag}}`__ | {{stat.passed}} / {{stat.failed}} / {{stat.skipped}} | {{stat.total}} / {{stat.elapsed}} ms |
+{% endfor %}

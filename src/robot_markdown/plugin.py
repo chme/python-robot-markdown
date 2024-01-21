@@ -33,7 +33,7 @@ class RobotConfig(Config):
 class RobotPlugin(BasePlugin[RobotConfig]):
     """mkdocs plugin to integrate RobotFramework test execution results."""
 
-    def on_files(self, files: Files, *, config: MkDocsConfig) -> Files | None:
+    def on_files(self, files: Files, *, config: MkDocsConfig) -> Files:
         """Handle the on_files event hook."""
         self._cachedirs = []
 

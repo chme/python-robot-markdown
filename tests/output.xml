@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.10.13 on linux)" generated="20240120 08:02:18.556" rpa="false" schemaversion="4">
+<suite id="s1" name="Example with Files" source="/home/chme/git/python-robot-markdown/examples/Example_with_Files">
+<kw name="Do Something" type="SETUP">
+<arg>${MESSAGE}</arg>
+<kw name="Log" library="BuiltIn">
+<arg>Running suite setup - ${arg}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240120 08:02:18.583" level="INFO">Running suite setup - Hello, world!</msg>
+<status status="PASS" starttime="20240120 08:02:18.583" endtime="20240120 08:02:18.583"/>
+</kw>
+<kw name="Create File" library="OperatingSystem">
+<arg>${OUTPUT_DIR}/test.env</arg>
+<arg>content=${CONTENT}</arg>
+<doc>Creates a file with the given content and encoding.</doc>
+<msg timestamp="20240120 08:02:18.583" level="INFO" html="true">Created file '&lt;a href="file:///home/chme/git/python-robot-markdown/examples/Example_with_Files/test.env"&gt;/home/chme/git/python-robot-markdown/examples/Example_with_Files/test.env&lt;/a&gt;'.</msg>
+<status status="PASS" starttime="20240120 08:02:18.583" endtime="20240120 08:02:18.584"/>
+</kw>
+<status status="PASS" starttime="20240120 08:02:18.582" endtime="20240120 08:02:18.584"/>
+</kw>
+<suite id="s1-s1" name="Test With File" source="/home/chme/git/python-robot-markdown/examples/Example_with_Files/test_with_file.robot">
+<test id="s1-s1-t1" name="Test with file" line="15">
+<kw name="Create File" library="OperatingSystem">
+<arg>${OUTPUT_DIR}/myfiles/test_with_file.json</arg>
+<arg>content=${JSON_CONTENT}</arg>
+<doc>Creates a file with the given content and encoding.</doc>
+<msg timestamp="20240120 08:02:18.587" level="INFO" html="true">Created file '&lt;a href="file:///home/chme/git/python-robot-markdown/examples/Example_with_Files/myfiles/test_with_file.json"&gt;/home/chme/git/python-robot-markdown/examples/Example_with_Files/myfiles/test_with_file.json&lt;/a&gt;'.</msg>
+<status status="PASS" starttime="20240120 08:02:18.587" endtime="20240120 08:02:18.587"/>
+</kw>
+<doc>File created in output folder in a Test Case</doc>
+<tag>example</tag>
+<status status="PASS" starttime="20240120 08:02:18.586" endtime="20240120 08:02:18.588"/>
+</test>
+<doc>A simple test suite to show case how files created
+in the output folder are included in robot-markdown
+generated documentation.</doc>
+<status status="PASS" starttime="20240120 08:02:18.584" endtime="20240120 08:02:18.589"/>
+</suite>
+<doc>Example suite with initialization file</doc>
+<status status="PASS" starttime="20240120 08:02:18.557" endtime="20240120 08:02:18.589"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">example</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Example with Files">Example with Files</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Test With File">Example with Files.Test With File</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

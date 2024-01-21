@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 import pytest
 
 from robot_markdown import cli, debug
@@ -9,7 +10,8 @@ from robot_markdown import cli, debug
 
 def test_main() -> None:
     """Basic CLI test."""
-    assert cli.main([]) == 0
+    example_file = os.path.dirname(__file__) + "/" + "output.xml"
+    assert cli.main([example_file]) == 0
 
 
 def test_show_help(capsys: pytest.CaptureFixture) -> None:
@@ -31,7 +33,7 @@ def test_show_version(capsys: pytest.CaptureFixture) -> None:
         capsys: Pytest fixture to capture output.
     """
     with pytest.raises(SystemExit):
-        cli.main(["-V"])
+        cli.main(["-v"])
     captured = capsys.readouterr()
     assert debug.get_version() in captured.out
 

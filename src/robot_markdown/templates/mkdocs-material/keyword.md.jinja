@@ -11,3 +11,13 @@
 
     <small>:octicons-code-16: `{{keyword.libname}}`.__{{keyword.kwname}}__</small><br>
     <small>:material-clock-fast: Executed in __{{keyword.elapsedtime}} ms__ on __{{keyword.start_time}}__</small>
+
+{% for keyword in keyword.body %}
+{% if keyword.type == 'KEYWORD' %}
+{% filter indent(width=4) %}
+    {% include "keyword.md.jinja" %}
+
+{% endfilter %}
+
+{% endif %}
+{% endfor %}

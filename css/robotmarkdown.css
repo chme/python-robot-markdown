@@ -1,0 +1,49 @@
+/* Symbols in Navigation and ToC. */
+:root,
+[data-md-color-scheme="default"] {
+  --robot-symbol-pass-fg-color: #5cad0f;
+  --robot-symbol-fail-fg-color: #953800;
+  --robot-symbol-skip-fg-color: #8250df;
+
+  --robot-symbol-pass-bg-color: #5cad0f1a;
+  --robot-symbol-fail-bg-color: #9538001a;
+  --robot-symbol-skip-bg-color: #8250df1a;
+}
+
+[data-md-color-scheme="slate"] {
+  --robot-symbol-pass-fg-color: #baff79;
+  --robot-symbol-fail-fg-color: #ffa657;
+  --robot-symbol-skip-fg-color: #d2a8ff;
+
+  --robot-symbol-pass-bg-color: #baff791a;
+  --robot-symbol-fail-bg-color: #ffa6571a;
+  --robot-symbol-skip-bg-color: #d2a8ff1a;
+}
+
+/* Indentation. */
+div.suite-contents:not(.first), div.test-contents {
+  padding-left: 25px;
+  border-left: .05rem solid var(--md-typeset-table-color);
+}
+
+code.robot-symbol {
+  border-radius: .1rem;
+  font-size: .75em;
+  padding: 0.1em .3em;
+  font-weight: bold;
+}
+
+code.robot-symbol-pass {
+  color: var(--robot-symbol-pass-fg-color);
+  background-color: var(--robot-symbol-pass-bg-color);
+}
+
+code.robot-symbol-fail {
+  color: var(--robot-symbol-fail-fg-color);
+  background-color: var(--robot-symbol-fail-bg-color);
+}
+
+code.robot-symbol-skip {
+  color: var(--robot-symbol-skip-fg-color);
+  background-color: var(--robot-symbol-skip-bg-color);
+}

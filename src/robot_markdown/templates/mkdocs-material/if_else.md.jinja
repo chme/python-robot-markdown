@@ -1,0 +1,10 @@
+??? {% if item.passed %}success{% elif item.failed %}failure{% else %}quote{% endif %} "__{{item.type}}__{% if item.condition %} `{{item.condition}}`{% endif %}"
+
+    <small>{% include "elapsed_time.md.jinja" %}</small>
+
+{% for child in item.body %}
+{% filter indent(width=4) %}
+    {% with item = child %}{% include "item.md.jinja" %}{% endwith %}
+
+{% endfilter %}
+{% endfor %}

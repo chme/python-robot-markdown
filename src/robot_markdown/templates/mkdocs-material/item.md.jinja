@@ -1,0 +1,34 @@
+{% if item.type == 'KEYWORD' %}
+{% with keyword = item %}{% include "keyword.md.jinja" %}{% endwith %}
+
+{% elif item.type == 'MESSAGE' %}
+{% with message = item %}{% include "message.md.jinja" %}{% endwith %}
+
+{% elif item.type == 'IF/ELSE ROOT' or item.type == 'TRY/EXCEPT ROOT' %}
+{% for child in item.body %}
+{% with item = child %}{% include "item.md.jinja" %}{% endwith %}
+
+{% endfor %}
+{% elif item.type == 'IF' or item.type == 'ELSE' or item.type == 'ELSE IF' or item.type == 'CONTINUE' or item.type == 'BREAK' or item.type == 'TRY' or item.type == 'FINALLY' %}
+{% include "if_else.md.jinja" %}
+
+{% elif item.type == 'EXCEPT' %}
+{% include "except.md.jinja" %}
+
+{% elif item.type == 'FOR' %}
+{% include "for_loop.md.jinja" %}
+
+{% elif item.type == 'WHILE' %}
+{% include "while_loop.md.jinja" %}
+
+{% elif item.type == 'ITERATION' %}
+{% include "iteration.md.jinja" %}
+
+{% else %}
+- {{item.type}} `{{item}}`
+
+```
+{{item.to_dict}}
+```
+
+{% endif %}

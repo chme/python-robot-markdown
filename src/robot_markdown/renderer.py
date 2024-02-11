@@ -1,5 +1,7 @@
 """Module for converting RobotFramework result XML file (output.xml) to markdown."""
 
+import os
+
 from jinja2 import Environment, PackageLoader, select_autoescape
 from robot.api import ExecutionResult
 
@@ -32,5 +34,6 @@ class Renderer:
         Returns:
             A markdown string.
         """
+        output_dir = os.path.abspath(os.path.dirname(robot_result_file)) + "/"
         result = ExecutionResult(robot_result_file)
-        return self.template.render(robot=result)
+        return self.template.render(robot=result, output_dir=output_dir)

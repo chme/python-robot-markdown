@@ -1,0 +1,9 @@
+{% for item in keyword.body %}
+{% if item.type == 'MESSAGE' %}
+{% with message = item %}{% include "message.md.jinja" %}{% endwith %}
+
+{% else %}
+{% with keyword = item %}{% include "log.md.jinja" %}{% endwith %}
+
+{% endif %}
+{% endfor %}

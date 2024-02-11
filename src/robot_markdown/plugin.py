@@ -1,6 +1,8 @@
 """MkDocs plugin to integrate RobotFramework test reports."""
 
 import os
+import re
+import shutil
 import tempfile
 
 from mkdocs.config import config_options as c
@@ -22,6 +24,8 @@ class _ReportConfig(Config):
     docs_md_file = c.Type(str, default="testreport.md")
     overwrite_cached_files = c.Type(bool, default=False)
     cache_dir = c.Type(str, default="")
+    copy_files = c.Type(bool, default=False)
+    copy_files_include = c.Type(str, default="^.*\\.(txt|json|xml|html)$")
 
 
 class RobotConfig(Config):
@@ -68,23 +72,11 @@ class RobotPlugin(BasePlugin[RobotConfig]):
             if report_config.robot_output_xml not in filenames:
                 continue
 
-            rel_dir = dirpath.removeprefix(f"{report_config.robot_reports_dir}/")
-            xml_file = f"{dirpath}/{report_config.robot_output_xml}"
-            md_file = f"{report_config.docs_rel_dir}/{rel_dir}/{report_config.docs_md_file}"
-            overwrite = report_config.overwrite_cached_files
-
-            md_content = renderer.render(xml_file)
-            self._write_file(md_content, f"{cachedir}/{md_file}", overwrite=overwrite)
-
-            files.append(
-                File(
-                    md_file,
-                    cachedir,
-                    config["site_dir"],
-                    config["use_directory_urls"],
-                ),
-            )
+            md_file = self._process_report_dir(dirpath, renderer, report_config, cachedir, files, config["site_dir"])
             summary_items.append(md_file)
+
+            if report_config.copy_files:
+                self._copy_report_dir(dirpath, report_config, cachedir, files, config["site_dir"])
 
         if report_config.create_summary_md:
             summary_contents = create_summary(summary_items)
@@ -95,9 +87,37 @@ class RobotPlugin(BasePlugin[RobotConfig]):
                     summary_file,
                     cachedir,
                     config["site_dir"],
-                    config["use_directory_urls"],
+                    False,
                 ),
             )
+
+    def _process_report_dir(
+        self,
+        dirpath: str,
+        renderer: Renderer,
+        report_config: _ReportConfig,
+        cachedir: str,
+        files: Files,
+        site_dir: str,
+    ) -> File:
+        rel_dir = dirpath.removeprefix(f"{report_config.robot_reports_dir}/")
+        xml_file = f"{dirpath}/{report_config.robot_output_xml}"
+        md_file = f"{report_config.docs_rel_dir}/{rel_dir}/{report_config.docs_md_file}"
+        overwrite = report_config.overwrite_cached_files
+
+        md_content = renderer.render(xml_file)
+        self._write_file(md_content, f"{cachedir}/{md_file}", overwrite=overwrite)
+
+        files.append(
+            File(
+                md_file,
+                cachedir,
+                site_dir,
+                False,
+            ),
+        )
+
+        return md_file
 
     def _write_file(self, content: str, output_path: str, *, overwrite: bool = False) -> None:
         """Write content to output_path, making sure any parent directories exist."""
@@ -107,3 +127,32 @@ class RobotPlugin(BasePlugin[RobotConfig]):
         os.makedirs(output_dir, exist_ok=True)
         with open(output_path, "w") as f:
             f.write(content)
+
+    def _copy_report_dir(
+        self,
+        report_dir: str,
+        report_config: _ReportConfig,
+        cachedir: str,
+        files: Files,
+        site_dir: str,
+    ) -> None:
+        filepattern = re.compile(report_config.copy_files_include)
+        for dirpath, _, filenames in os.walk(report_dir):
+            rel_dir = dirpath.removeprefix(f"{report_config.robot_reports_dir}/")
+            for filename in filenames:
+                rel_file = f"{report_config.docs_rel_dir}/{rel_dir}/{filename}"
+                target_file = f"{cachedir}/{rel_file}"
+                source_file = f"{dirpath}/{filename}"
+                if not filepattern.match(source_file):
+                    continue
+                target_dir = os.path.dirname(target_file)
+                os.makedirs(target_dir, exist_ok=True)
+                shutil.copy(source_file, f"{cachedir}/{rel_file}")
+                files.append(
+                    File(
+                        rel_file,
+                        cachedir,
+                        site_dir,
+                        False,
+                    ),
+                )

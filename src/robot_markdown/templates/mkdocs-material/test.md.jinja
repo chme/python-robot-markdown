@@ -4,23 +4,33 @@
 
 {{test.doc}}
 
+<small>{% with item = test %}{% include "elapsed_time.md.jinja" %}{% endwith %}</small>
+
 
 {% if test.message %}
 !!! failure ""
     {{test.message | indent}}
 {% endif %}
 
-=== ":octicons-beaker-16: Test Case"
+=== ":material-test-tube: Test Case"
 
-{% for keyword in test.body %}
+{% for item in test.body %}
 {% filter indent(width=4) %}
-    {% include "keyword.md.jinja" %}
+    {% include "item.md.jinja" %}
 
 {% endfilter %}
 
 {% endfor %}
 
+=== ":material-text-long: Log"
 
-<small>{% with item = test %}{% include "elapsed_time.md.jinja" %}{% endwith %}</small>
+{% for keyword in test.body %}
+{% filter indent(width=4) %}
+    {% include "log.md.jinja" %}
+
+{% endfilter %}
+
+{% endfor %}
+
 
 </div>

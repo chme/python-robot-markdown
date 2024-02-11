@@ -1,0 +1,7 @@
+{% if message.html %}
+<pre><code markdown>{{message.level}} {{message.message | replace("file://" + output_dir, "") | indent}}</code></pre>
+
+{% else %}
+<pre><code markdown>{{message.level}} {{message.message | replace("file://" + output_dir, "") | e | indent}}</code></pre>
+
+{% endif %}

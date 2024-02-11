@@ -2,11 +2,9 @@
 
 {{robot.suite.doc}}
 
-<small>:material-list-status: __{{robot.statistics.total.failed}} failed__, {{robot.statistics.total.passed}} passed, {{robot.statistics.total.skipped}} skiped, __{{robot.statistics.total.total}} total__</small><br>
-<small>{% with item = robot.suite %}{% include "elapsed_time.md.jinja" %}{% endwith %}</small>
-
-
-:octicons-code-16: `{{robot.suite.source}}`
+:material-list-status: __{{robot.statistics.total.failed}} failed__, {{robot.statistics.total.passed}} passed, {{robot.statistics.total.skipped}} skiped, __{{robot.statistics.total.total}} total__<br>
+{% with item = robot.suite %}:material-clock-fast: Executed in __{{item.elapsedtime}} ms__ on __{{item.start_time.strftime('%B %d, %Y')}}__ at __{{item.start_time.strftime('%H:%M:%S')}}__{% endwith %}<br>
+:octicons-code-16: Source `{{robot.suite.source}}`
 
 __Statistics__
 
@@ -18,9 +16,7 @@ __Statistics__
 {% include "tag_statistics.md.jinja" %}
 
 {% if robot.suite.has_setup %}
-__Setup__
-
-{% with keyword = robot.suite.setup %}{% include "keyword.md.jinja" %}{% endwith %}
+{% with keyword = robot.suite.setup %}{% include "setup.md.jinja" %}{% endwith %}
 {% endif %}
 
 {% set depth = 2 %}

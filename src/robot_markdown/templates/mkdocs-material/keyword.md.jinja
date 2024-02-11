@@ -2,22 +2,12 @@
     
     {{keyword.doc}}
 
-    {% for message in keyword.messages -%}
-    ```
-    {{message.level}} {{message.message | indent}}
-    ```
-
-    {% endfor %}
-
     <small>:octicons-code-16: `{{keyword.libname}}`.__{{keyword.kwname}}__</small><br>
-    <small>:material-clock-fast: Executed in __{{keyword.elapsedtime}} ms__ on __{{keyword.start_time}}__</small>
+    <small>{% with item = keyword %}{% include "elapsed_time.md.jinja" %}{% endwith %}</small>
 
-{% for keyword in keyword.body %}
-{% if keyword.type == 'KEYWORD' %}
+{% for item in keyword.body %}
 {% filter indent(width=4) %}
-    {% include "keyword.md.jinja" %}
+    {% include "item.md.jinja" %}
 
 {% endfilter %}
-
-{% endif %}
 {% endfor %}

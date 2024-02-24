@@ -1,0 +1,11 @@
+{% if robot_env %}
+
+__Environment__
+
+| Name | Value |
+| --- | --- |
+{% for var, val in robot_env.items() %}
+| `{{var}}` | {{val}} |
+{% endfor %}
+
+{% endif %}

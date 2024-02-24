@@ -6,6 +6,8 @@
 {% with item = robot.suite %}:material-clock-fast: Executed in __{{item.elapsedtime}} ms__ on __{{item.start_time.strftime('%B %d, %Y')}}__ at __{{item.start_time.strftime('%H:%M:%S')}}__{% endwith %}<br>
 :octicons-code-16: Source `{{robot.suite.source}}`
 
+{% include "environment.md.jinja" %}
+
 __Statistics__
 
 |  | Pass / Fail / Skip | Total / Elapsed |

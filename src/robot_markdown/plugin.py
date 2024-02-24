@@ -25,7 +25,8 @@ class _ReportConfig(Config):
     overwrite_cached_files = c.Type(bool, default=False)
     cache_dir = c.Type(str, default="")
     copy_files = c.Type(bool, default=False)
-    copy_files_include = c.Type(str, default="^.*\\.(txt|json|xml|html)$")
+    copy_files_include = c.Type(str, default="^.*\\.(txt|json|xml|html|env)$")
+    env_file = c.Type(str, default="")
 
 
 class RobotConfig(Config):
@@ -104,8 +105,11 @@ class RobotPlugin(BasePlugin[RobotConfig]):
         xml_file = f"{dirpath}/{report_config.robot_output_xml}"
         md_file = f"{report_config.docs_rel_dir}/{rel_dir}/{report_config.docs_md_file}"
         overwrite = report_config.overwrite_cached_files
+        env_file = f"{dirpath}/{report_config.env_file}" if report_config.env_file else None
 
-        md_content = renderer.render(xml_file)
+        print(env_file)
+
+        md_content = renderer.render(xml_file, env_file=env_file)
         self._write_file(md_content, f"{cachedir}/{md_file}", overwrite=overwrite)
 
         files.append(

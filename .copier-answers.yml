@@ -1,10 +1,10 @@
 # Changes here will be overwritten by Copier
-_commit: 1.1.3
+_commit: 1.2.6
 _src_path: gh:pawamoy/copier-pdm
 author_email: christian.meffert@googlemail.com
 author_fullname: Christian Meffert
 author_username: chme
-copyright_date: '2023'
+copyright_date: '2024'
 copyright_holder: Christian Meffert
 copyright_holder_email: christian.meffert@googlemail.com
 copyright_license: MIT License

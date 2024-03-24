@@ -5,7 +5,7 @@ repo_url: "https://github.com/chme/python-robot-markdown"
 repo_name: "chme/python-robot-markdown"
 site_dir: "site"
 watch: [mkdocs.yml, README.md, CONTRIBUTING.md, CHANGELOG.md, src/robot_markdown]
-copyright: Copyright &copy; 2023 Christian Meffert
+copyright: Copyright &copy; 2024 Christian Meffert
 edit_uri: edit/main/docs/
 
 validation:

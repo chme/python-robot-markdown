@@ -1,7 +1,5 @@
 {% if message.html %}
-<pre><code markdown>{{message.level}} {{message.message | replace("file://" + output_dir, "") | indent}}</code></pre>
-
+<pre class="robot-log-message"><code markdown>{{message.level}} {{message.message | indent}}</code></pre>
 {% else %}
-<pre><code markdown>{{message.level}} {{message.message | replace("file://" + output_dir, "") | e | indent}}</code></pre>
-
+<pre class="robot-log-message"><code markdown>{{message.level}} {{message.message | e | indent}}</code></pre>
 {% endif %}

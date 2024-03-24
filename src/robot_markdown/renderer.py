@@ -6,6 +6,8 @@ from dotenv import dotenv_values
 from jinja2 import Environment, PackageLoader, select_autoescape
 from robot.api import ExecutionResult
 
+from robot_markdown.template_util import TemplateUtil
+
 
 class Renderer:
     """Renderer class responsible for converting RobotFramework result files to markdown."""
@@ -24,7 +26,7 @@ class Renderer:
         )
         self.template = self.jinjaEnv.get_template("testreport.md.jinja")
 
-    def render(self, robot_result_file: str, env_file: str = None) -> str:
+    def render(self, robot_result_file: str, env_file: str | None = None) -> str:
         """Convert a RobotFramework result XML to markdown.
 
         Read and parse the given file and convert it to markdown using Jinja templates.
@@ -40,4 +42,5 @@ class Renderer:
         robot_env = dotenv_values(env_file) if env_file else None
         output_dir = os.path.abspath(os.path.dirname(robot_result_file)) + "/"
         result = ExecutionResult(robot_result_file)
-        return self.template.render(robot=result, robot_env=robot_env, output_dir=output_dir)
+        util = TemplateUtil(output_dir)
+        return self.template.render(robot=result, robot_env=robot_env, output_dir=output_dir, robot_util=util)

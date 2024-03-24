@@ -19,7 +19,10 @@ nav:
   - Changelog: changelog.md
   - Credits: credits.md
   - License: license.md
-- Examples: examples/
+- Examples:
+  - Robot Demo: examples/Robot_Demo/suite.md
+  - Robot Language: examples/Robot_Language/suite.md
+  - Output Files: examples/Output_Files/
 # defer to gen-files + literate-nav
 - API reference:
   - robot-markdown: reference/
@@ -101,13 +104,28 @@ plugins:
 - search
 - robot_markdown:
     reports:
-    - robot_reports_dir: examples
+    - robot_reports_dir: examples/Robot_Demo/output
+      robot_output_xml: output.xml
+      docs_rel_dir: examples/Robot_Demo
+      docs_md_file: suite.md
+      overwrite_cached_files: true
+      cache_dir: .cache
+    - robot_reports_dir: examples/Robot_Language/output
+      robot_output_xml: output.xml
+      docs_rel_dir: examples/Robot_Language
+      docs_md_file: suite.md
+      overwrite_cached_files: true
+      cache_dir: .cache
+    - robot_reports_dir: examples/Output_Files/output
       robot_output_xml: output.xml
       create_summary_md: true
       summary_md_file: SUMMARY.md
-      docs_rel_dir: examples
-      docs_md_file: testreport.md
+      docs_rel_dir: examples/Output_Files
+      docs_md_file: suite.md
       overwrite_cached_files: true
+      cache_dir: .cache
+      copy_files: true
+      env_file: test.env
 - markdown-exec
 - gen-files:
     scripts:

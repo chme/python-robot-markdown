@@ -1,0 +1,6 @@
+*** Settings ***
+Documentation    Robot Framework Language
+...              
+...              Example with different Robot Framework language constructs.
+...              
+...              Visit https://robocorp.com/docs-robot-framework/languages-and-frameworks/robot-framework for more information.

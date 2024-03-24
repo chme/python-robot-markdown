@@ -1,26 +1,10 @@
 *** Settings ***
-Documentation     A simple test suite to show case how files created
-...               in the output folder are included in robot-markdown
-...               generated documentation.
-
-Library    ../../.venv/lib/python3.10/site-packages/robot/libraries/OperatingSystem.py
+Documentation     Example test cases with IF conditions
 
 *** Variables ***
-${JSON_CONTENT}    SEPARATOR=\n
-...    \{
-...        "a": "b"
-...    }
 @{ROBOTS}      Bender    Johnny5    Terminator    Robocop
 
 *** Test Cases ***
-Test with file
-    [Documentation]    File created in output folder in a Test Case
-    Create File        ${OUTPUT_DIR}/myfiles/test_with_file.json    content=${JSON_CONTENT}
-
-File in sub keyword
-    [Documentation]    File created in a sub keyword
-    Create File In Output Folder
-
 Use IF construct in Robot Framework
     IF    ${True}
         Log    This line IS executed.
@@ -130,8 +114,3 @@ Execute a for loop only three times
         IF    $robot == 'Terminator'    CONTINUE
         Log    ${robot}
     END
-
-*** Keywords ***
-Create File In Output Folder
-    [Arguments]        ${filename}=mytestfile.txt    ${content}=Lorem ipsum
-    Create File        ${OUTPUT_DIR}/${filename}    content=${content}

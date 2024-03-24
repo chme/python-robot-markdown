@@ -24,12 +24,10 @@
 
 === ":material-text-long: Log"
 
-{% for keyword in test.body %}
+{% for message in robot_util.get_log_messages(test) %}
 {% filter indent(width=4) %}
-    {% include "log.md.jinja" %}
-
+    {% include "message.md.jinja" %}
 {% endfilter %}
-
 {% endfor %}
 
 

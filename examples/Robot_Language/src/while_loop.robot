@@ -1,3 +1,6 @@
+*** Settings ***
+Documentation     Example test cases with WHILE loops
+
 *** Test Cases ***
 WHILE: A simple while loop using the default loop limit
     WHILE    True    limit=10

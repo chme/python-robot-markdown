@@ -1,5 +1,6 @@
 *** Settings ***
-Documentation     Robot Framework 5 syntax examples.
+Documentation     Example test cases with TRY EXCEPT FINALLY
+
 
 *** Test Cases ***
 TRY / EXCEPT: Catch any exception

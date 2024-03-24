@@ -1,8 +1,8 @@
 *** Settings ***
-Documentation    Example suite with initialization file
+Documentation    Example test suite with initialization file
 Suite Setup      Do Something    ${MESSAGE}
 Test Tags        example
-Library    ../../.venv/lib/python3.10/site-packages/robot/libraries/OperatingSystem.py
+Library          OperatingSystem
 
 *** Variables ***
 ${MESSAGE}       Hello, world!

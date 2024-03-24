@@ -1,3 +1,6 @@
+*** Settings ***
+Documentation     Example test cases with FOR loops
+
 *** Variables ***
 ${STRING}=                  cat
 ${NUMBER}=                  ${1}

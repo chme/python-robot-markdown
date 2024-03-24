@@ -73,22 +73,22 @@ class RobotPlugin(BasePlugin[RobotConfig]):
             if report_config.robot_output_xml not in filenames:
                 continue
 
-            md_file = self._process_report_dir(dirpath, renderer, report_config, cachedir, files, config["site_dir"])
-            summary_items.append(md_file)
-
             if report_config.copy_files:
                 self._copy_report_dir(dirpath, report_config, cachedir, files, config["site_dir"])
 
+            md_file = self._process_report_dir(dirpath, renderer, report_config, cachedir, files, config["site_dir"])
+            summary_items.append(md_file)
+
         if report_config.create_summary_md:
             summary_contents = create_summary(summary_items)
-            summary_file = f"{report_config.docs_rel_dir}/{report_config.summary_md_file}"
-            self._write_file(summary_contents, f"{cachedir}/{summary_file}", overwrite=True)
+            summary_file = os.path.join(report_config.docs_rel_dir, report_config.summary_md_file)
+            self._write_file(summary_contents, os.path.join(cachedir, summary_file), overwrite=True)
             files.append(
                 File(
                     summary_file,
                     cachedir,
                     config["site_dir"],
-                    False,
+                    use_directory_urls=False,
                 ),
             )
 
@@ -100,28 +100,27 @@ class RobotPlugin(BasePlugin[RobotConfig]):
         cachedir: str,
         files: Files,
         site_dir: str,
-    ) -> File:
-        rel_dir = dirpath.removeprefix(f"{report_config.robot_reports_dir}/")
-        xml_file = f"{dirpath}/{report_config.robot_output_xml}"
-        md_file = f"{report_config.docs_rel_dir}/{rel_dir}/{report_config.docs_md_file}"
+    ) -> str:
+        rel_dir = os.path.relpath(dirpath, report_config.robot_reports_dir)
+        xml_file = os.path.join(dirpath, report_config.robot_output_xml)
+        rel_md_file = os.path.join(rel_dir, report_config.docs_md_file)
+        md_file = os.path.join(report_config.docs_rel_dir, rel_md_file)
         overwrite = report_config.overwrite_cached_files
-        env_file = f"{dirpath}/{report_config.env_file}" if report_config.env_file else None
-
-        print(env_file)
+        env_file = os.path.join(dirpath, report_config.env_file) if report_config.env_file else None
 
         md_content = renderer.render(xml_file, env_file=env_file)
-        self._write_file(md_content, f"{cachedir}/{md_file}", overwrite=overwrite)
+        self._write_file(md_content, os.path.join(cachedir, md_file), overwrite=overwrite)
 
         files.append(
             File(
                 md_file,
                 cachedir,
                 site_dir,
-                False,
+                use_directory_urls=False,
             ),
         )
 
-        return md_file
+        return "/" + rel_md_file
 
     def _write_file(self, content: str, output_path: str, *, overwrite: bool = False) -> None:
         """Write content to output_path, making sure any parent directories exist."""
@@ -157,6 +156,6 @@ class RobotPlugin(BasePlugin[RobotConfig]):
                         rel_file,
                         cachedir,
                         site_dir,
-                        False,
+                        use_directory_urls=False,
                     ),
                 )

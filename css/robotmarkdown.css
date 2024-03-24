@@ -47,3 +47,8 @@ code.robot-symbol-skip {
   color: var(--robot-symbol-skip-fg-color);
   background-color: var(--robot-symbol-skip-bg-color);
 }
+
+pre.robot-log-message {
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+}

@@ -2,92 +2,102 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://chme.github.io/python-robot-markdown/</loc>
-         <lastmod>2024-02-12</lastmod>
+         <lastmod>2024-03-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chme.github.io/python-robot-markdown/changelog/</loc>
-         <lastmod>2024-02-12</lastmod>
+         <lastmod>2024-03-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chme.github.io/python-robot-markdown/code_of_conduct/</loc>
-         <lastmod>2024-02-12</lastmod>
+         <lastmod>2024-03-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chme.github.io/python-robot-markdown/contributing/</loc>
-         <lastmod>2024-02-12</lastmod>
+         <lastmod>2024-03-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chme.github.io/python-robot-markdown/credits/</loc>
-         <lastmod>2024-02-12</lastmod>
+         <lastmod>2024-03-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chme.github.io/python-robot-markdown/license/</loc>
-         <lastmod>2024-02-12</lastmod>
+         <lastmod>2024-03-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chme.github.io/python-robot-markdown/examples/SUMMARY.html</loc>
-         <lastmod>2024-02-12</lastmod>
+         <loc>https://chme.github.io/python-robot-markdown/examples/Output_Files/SUMMARY.html</loc>
+         <lastmod>2024-03-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chme.github.io/python-robot-markdown/examples/Example_with_Files/suite.html</loc>
-         <lastmod>2024-02-12</lastmod>
+         <loc>https://chme.github.io/python-robot-markdown/examples/Output_Files/20240317-1512/suite.html</loc>
+         <lastmod>2024-03-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chme.github.io/python-robot-markdown/examples/RobotDemo/suite.html</loc>
-         <lastmod>2024-02-12</lastmod>
+         <loc>https://chme.github.io/python-robot-markdown/examples/Output_Files/20240317-1556/suite.html</loc>
+         <lastmod>2024-03-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://chme.github.io/python-robot-markdown/examples/simple_example_2/suite.html</loc>
-         <lastmod>2024-02-12</lastmod>
+         <loc>https://chme.github.io/python-robot-markdown/examples/Robot_Demo/suite.html</loc>
+         <lastmod>2024-03-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chme.github.io/python-robot-markdown/examples/Robot_Language/suite.html</loc>
+         <lastmod>2024-03-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chme.github.io/python-robot-markdown/reference/SUMMARY/</loc>
-         <lastmod>2024-02-12</lastmod>
+         <lastmod>2024-03-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chme.github.io/python-robot-markdown/reference/robot_markdown/</loc>
-         <lastmod>2024-02-12</lastmod>
+         <lastmod>2024-03-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chme.github.io/python-robot-markdown/reference/robot_markdown/cli/</loc>
-         <lastmod>2024-02-12</lastmod>
+         <lastmod>2024-03-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chme.github.io/python-robot-markdown/reference/robot_markdown/debug/</loc>
-         <lastmod>2024-02-12</lastmod>
+         <lastmod>2024-03-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chme.github.io/python-robot-markdown/reference/robot_markdown/plugin/</loc>
-         <lastmod>2024-02-12</lastmod>
+         <lastmod>2024-03-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chme.github.io/python-robot-markdown/reference/robot_markdown/renderer/</loc>
-         <lastmod>2024-02-12</lastmod>
+         <lastmod>2024-03-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chme.github.io/python-robot-markdown/reference/robot_markdown/summary/</loc>
-         <lastmod>2024-02-12</lastmod>
+         <lastmod>2024-03-24</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://chme.github.io/python-robot-markdown/reference/robot_markdown/template_util/</loc>
+         <lastmod>2024-03-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://chme.github.io/python-robot-markdown/coverage/</loc>
-         <lastmod>2024-02-12</lastmod>
+         <lastmod>2024-03-24</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
